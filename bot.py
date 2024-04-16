@@ -40,6 +40,6 @@ async def on_ready():
 
 @client.tree.command(name='quizcreate', description='Create a quiz with a set of questions and answers')
 async def quiz_create(interaction: discord.Interaction):
-    await interaction.reponse.send_message(embed=QUIZ_EMBED_CREATE)
+    await interaction.response.send_message(embed=QUIZ_EMBED_CREATE)
 
 client.run(token=TOKEN)
