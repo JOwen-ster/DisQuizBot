@@ -25,6 +25,9 @@ intents = discord.Intents.all() # use discord.Intents.default() if you don't nee
 BOT_PREFIX = '$'
 client = commands.Bot(command_prefix=BOT_PREFIX, intents=intents)
 
+
+QUIZ_EMBED_CREATE = discord.Embed(title="Create A Quiz", description="Add some questions and answers to your quiz.", color=discord.Color.blue())
+
 # Listener for when the bot has been connected to the gateway and synced slash commands
 @client.event
 async def on_ready():
@@ -35,5 +38,8 @@ async def on_ready():
     except Exception as e:
         print(F'Could Not Sync Tree: {e}')
 
+@client.tree.command(name='quizcreate', description='Create a quiz with a set of questions and answers')
+async def quiz_create(interaction: discord.Interaction):
+    await interaction.reponse.send_message(embed=QUIZ_EMBED_CREATE)
 
 client.run(token=TOKEN)
